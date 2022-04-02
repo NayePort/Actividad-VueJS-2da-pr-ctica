@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <title>Practica 3 Cinthia Portillo A00811827</title>
+  </head>  
+  <body>
+    <body style="background-color:rgb(226, 248, 243);">
+    <h1 style="color:rgb(13, 141, 9);" ><b>Turismo Mexicano</b></h1> 
+    <img src="https://www.entornoturistico.com/wp-content/uploads/2020/08/Presentacio%CC%81n-de-Visit-Mexico-660x330.jpg" style="width:300px;height:150px;">
+    <div id="app">
+
+        <label>Nombre:</label><input type="text" v-model="name"/>{{name}}
+        <button @click="alerta">Alerta</button>
+      
+        <br/> 
+        <button @click="show=!show">
+            <span v-if="show">Hide</span>
+
+            <span v-else="show">Show</span>
+        </button>
+      <!--<p v-if="show"> Gracias por visitarnos</p>-->
+      <p v-if="show" style="color:rgb(13, 141, 9);" ><b>GRACIAS POR VISITARNOS</b></p>
+               
+      <br/>
+      <table border="1px"> 
+        <tr> 
+          <td> Estado </td>
+          <td> Ciudad </td>
+          <td> Tour </td>
+        </tr>
+        <tr> 
+            <td> Jalisco </td>
+            <td> Tequila </td>
+            <td> Museo Tradicional del Tequila </td>
+          </tr>
+          <tr>
+        <tr> 
+          <td> Nuevo León </td>
+          <td> García </td>
+          <td> Grutas de García </td>
+        </tr>
+        <tr> 
+            <td> CDMX </td>
+            <td> Alcaldía Miguel Hidalgo </td>
+            <td> Bosque de Chapultepec </td>
+          </tr>
+          <tr> 
+            <td> Baja California Sur </td>
+            <td> Los Cabos </td>
+            <td> Playa de Los amantes </td>
+          </tr>
+      </table>
+
+      <br/>
+      <select v-model="lugar">
+          <option v-for="(place, index) in destinos" :value="index">{{place}}</option>
+      </select>{{lugar}}
+    </div>
+    <br/>
+    
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>-->
+  <script>
+      Vue.createApp({
+          data(){
+              return{
+                  show: false,
+                  name: '',
+                  destinos: ['','Baja California Sur','Nuevo León','CDMX','Jalisco',],
+                  lugar: 'Elige tu lugar favorito'
+              }
+          },
+          methods: {
+              alerta(){
+                  alert('Hola ' + this.name +' , tu destino favorito está en la posición número '+ this.lugar + ' a nivel nacional de lugares más visitados.');
+              }
+          }
+      }).mount('#app');
+  </script>
+</html>
